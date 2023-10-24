@@ -6,9 +6,10 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-st.title ("Reporte técnico complementario  de metodología para pronóstico de demanda de \
-          energía a corto plazo")
-st.subheader("")
+st.title("PROYECTO CENACE-UNISON 2023-2025")
+st.subheader ("DISEÑO E IMPLEMENTACIÓN DE UNA METODOLOGÍA PARA PRONÓSTICO DE DEMANDA DE ENERGÍA \
+              A CORTO PLAZO CON MANEJO DE DATOS BAJO INCERTIDUMBRE")
+st.subheader("Tablero Complementario")
 
 
 # PART 3

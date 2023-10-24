@@ -65,7 +65,7 @@ Date = holiday_dates[2]
 datepath = str(date1)
 #tipo = str(0)          ## choose corresponding index '0': 11:00 AM, '1': 12:00 AM, ..., '12': 23:00 AM
 option = st.select_slider(
-    'Selecciona la hora de pronostico', options=(
+    'Selecciona la hora de pronóstico', options=(
     '11:00 AM' , '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM',
                '06:00 PM', '07:00 PM', '08:00 PM', '09:00 PM', '10:00 PM', '11:00 PM'),
               )
