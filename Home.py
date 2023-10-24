@@ -7,7 +7,7 @@ import numpy as np
 from datetime import datetime
 
 
-st.title("CONVENIO CENACE-UNISON 2023-2025")
+st.title(":grey[CONVENIO CENACE-UNISON 2023-2025]")
 
 
 st.header('''
@@ -16,8 +16,13 @@ st.header('''
           ''')            
 st.markdown('''
             ''')
-st.subheader("Transferencia de tecnología: metodología para el pronóstico a corto plazo para la zona de \
-             Gerencia del Noroeste con datos en adelanto")
 
-st.subheader("Tablero Complementario Octubre 2023")
+st.subheader('''
+             :grey[Tablero Complementario al reporte técnico transferencia de tecnología: \
+             metodología para el pronóstico a corto plazo para la zona de \
+             Gerencia del Noroeste con datos en adelanto]
+             ''')
+
+
+
 
