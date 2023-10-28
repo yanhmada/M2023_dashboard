@@ -46,6 +46,8 @@ option = st.select_slider(
 tipo = tipo_dict_1[option]
 
 df_compute = pd.read_csv("RESULTADOS_MAPE_HORA/Mape_["+tipo+"].csv")
+st.write(f' Hora de cálculo de pronóstico {option}')
+
 
 # Plot by season. Example for forecast computed at 11:00 AM 
 df_compute['Date'] = pd.to_datetime(df_compute['Date']) #
@@ -115,7 +117,6 @@ fig.update_layout(xaxis=dict(title='MAPE (24 h)', zeroline=False),boxmode='group
 fig.update_traces(orientation='h', side='positive', width=4) # horizontal box plots 
 fig.update_layout(
         title= models_info + '<br>' 
-        'Hora de cálculo de pronóstico: 11:00 AM' + '<br>'
         + '<sub>' + "Cálculo de Mape por Estación "+ '<br>' + '</sub>',
         legend_title='Variantes',
         font=dict(
@@ -128,7 +129,8 @@ fig.update_layout(
         'yanchor': 'top'})
 
 st.plotly_chart(fig)
-
+st.write(f' Grafica de MAPE Por mes ')
+st.divider()
 #MONTHLY
 mes = st.select_slider(
     'Selecciona Mes para pronóstico', options=(
@@ -136,13 +138,26 @@ mes = st.select_slider(
                'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
               )
 
-st.subheader("Se muestran resultados de {mes} ")
-
+st.subheader(f"Se muestran resultados de {mes} ")
+map_mes= {
+    'Enero': 1,
+    'Febrero': 2,
+    'Marzo': 3,
+    'Abril': 4,
+    'Mayo': 5,
+    'Junio': 6,
+    'Julio': 7,
+    'Agosto': 8,
+    'Septiembre': 9,
+    'Octubre': 10,
+    'Noviembre': 11,
+    'Diciembre': 12
+}
 df_compute['Date'] = pd.to_datetime(df_compute['Date']) #
 df = df_compute
 df['Month'] = (df['Date'].dt.month)
-fig = go.Figure()
-fig.update_layout(
+fig2 = go.Figure()
+fig2.update_layout(
     autosize=False,
     width=1000,
     height=1400,
@@ -153,57 +168,53 @@ fig.update_layout(
 #        tickmode="array",
         titlefont=dict(size=20),
     ))
+
+mes_sel =map_mes[mes] # month selection
+Mape_Models = ['Mape_M_1', 'Mape_M_2', 'Mape_M_3', 'Mape_M_4']
+fig2 = go.Figure()
+fig2.update_layout(
+    autosize=False,
+    width=1200,
+    height=600,
+    )
+newnames = { 
+            'Mape_M_1':'SV: Sin variables por adelanto', 
+            'Mape_M_2':'PC: Sólo primera componente por adelanto',
+            'Mape_M_3':'CF: Clima y festivos por adelanto',
+            'Mape_M_4':'CFD: Clima, festivos y día de la semana por adelanto'
+           }
+fig2.for_each_trace(lambda t: t.update(name = newnames[t.name]))
+
+
 for mape in Mape_Models:
-        fig.add_trace(go.Violin(
-        x=df[mape][ df['Month'] == mes ].tolist(),
-        legendgroup=mape, scalegroup=mape, 
-        name= mape + mes,
+    fig2.add_trace(go.Violin(
+    x=df[mape][df['Month'] == mes_sel].tolist(),
+    
+        legendgroup=mape, 
+        scalegroup=mape, 
+        name=mape ,  
         marker_color=color_dict[mape],
         line_color=color_dict[mape], 
-    #    fillcolor=color_dict_e[estacion],
         points='outliers',
         box_visible=True, 
-      #  showlegend=False,
+        # showlegend=False,
         visible=True, 
         opacity=0.7
-        ))
-newnames = {'Mape_M_1Invierno':'SV ❄', 
-            'Mape_M_2Invierno':'PC ❄',
-            'Mape_M_3Invierno':'CF ❄',
-            'Mape_M_4Invierno':'CFD ❄',
-            'Mape_M_5Invierno':'CFT ❄',
-            'Mape_M_1Primavera':'SV ❀', 
-            'Mape_M_2Primavera':'PC ❀',
-            'Mape_M_3Primavera':'CF ❀',
-            'Mape_M_4Primavera':'CFD ❀',
-            'Mape_M_5Primavera':'CFT ❀',
-            'Mape_M_1Verano':'SV ☼', 
-            'Mape_M_2Verano':'PC ☼',
-            'Mape_M_3Verano':'CF ☼',
-            'Mape_M_4Verano':'CFD ☼',
-            'Mape_M_5Verano':'CFT ☼',
-            'Mape_M_1Otoño':'SV 𖥸', 
-            'Mape_M_2Otoño':'PC 𖥸',
-            'Mape_M_3Otoño':'CF 𖥸',
-            'Mape_M_4Otoño':'CFD 𖥸',
-            'Mape_M_5Otoño':'CFT 𖥸'
+    ))
 
-           }
-fig.for_each_trace(lambda t: t.update(name = newnames[t.name]))
-fig.update_layout(xaxis=dict(title='MAPE (24 h)', zeroline=False),boxmode='group')
-fig.update_traces(orientation='h', side='positive', width=4) # horizontal box plots 
-fig.update_layout(
+fig2.update_layout(xaxis=dict(title='MAPE para pronóstico', zeroline=False),boxmode='group')
+fig2.update_traces(orientation='h', side='positive', width=4) # horizontal orientation 
+fig2.update_layout(
         title= models_info + '<br>' 
-        'Hora de cálculo de pronóstico: 11:00 AM' + '<br>'
-        + '<sub>' + "Cálculo de Mape por Mes {mes} "+ '<br>' + '</sub>',
+        + '<sub>' + "Cálculo de Mape por Mes  "+ '<br>' + '</sub>',
         legend_title='Variantes',
         font=dict(
             size=13,
             color='gray'))
-fig.update_layout(
+fig2.update_layout(
     title={
         'y':0.99,
         'xanchor': 'left',
         'yanchor': 'top'})
 
-st.plotly_chart(fig)
+st.plotly_chart(fig2)
