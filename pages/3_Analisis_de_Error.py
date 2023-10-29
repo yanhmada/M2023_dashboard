@@ -131,6 +131,7 @@ fig.update_layout(
 st.plotly_chart(fig)
 st.write(f' Grafica de MAPE Por mes ')
 st.divider()
+st.write(f'Ejemplo {option}')
 #MONTHLY
 mes = st.select_slider(
     'Selecciona Mes para pronóstico', options=(
@@ -163,10 +164,7 @@ fig2.update_layout(
     height=1400,
     yaxis=dict(
         title_text='MAPE Para mes {mes}',
-#        ticktext=['Invierno','Primavera','Verano','Otoño'],
-#        tickvals=[2,6,10,14],
-#        tickmode="array",
-        titlefont=dict(size=20),
+            titlefont=dict(size=20),
     ))
 
 mes_sel =map_mes[mes] # month selection
@@ -185,11 +183,9 @@ newnames = {
            }
 fig2.for_each_trace(lambda t: t.update(name = newnames[t.name]))
 
-
 for mape in Mape_Models:
     fig2.add_trace(go.Violin(
     x=df[mape][df['Month'] == mes_sel].tolist(),
-    
         legendgroup=mape, 
         scalegroup=mape, 
         name=mape ,  
@@ -201,7 +197,6 @@ for mape in Mape_Models:
         visible=True, 
         opacity=0.7
     ))
-
 fig2.update_layout(xaxis=dict(title='MAPE para pronóstico', zeroline=False),boxmode='group')
 fig2.update_traces(orientation='h', side='positive', width=4) # horizontal orientation 
 fig2.update_layout(
