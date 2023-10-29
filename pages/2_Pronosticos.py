@@ -8,6 +8,25 @@ from datetime import datetime
 
 # PART 3
 
+st.markdown("<h1 style='color: gray;'> CONVENIO CENACE 2023-2025 </h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='color: orange;'> Diseño  e  implementación de una metodología para pronóstico de demanda de energía \
+            a corto plazo con manejo de datos bajo incertidumbre  </h2>", unsafe_allow_html=True)
+
+st.caption('''
+           En esta sección se incluyen los comparativos de  _MAPE_  para los diferentes 4 modelos\
+           
+           ''')
+st.markdown( """
+<h5 style='color: gray;'>
+- M1 : Modelo de Base sin Adelanto <br>
+- M2 : Modelo, adelanto con 1 componente.<br>
+- M3 : Modelo adelanto, climas y festivo.    <br>       
+- M4: Modelo adelanto, clima, festivos y día<br>
+</h5>
+""",
+unsafe_allow_html = True)
+#st.caption('En esta sección se incluyen los comparativos de  _MAPE_ :orange[colors] and emojis :sunglasses:')
+
 color_dict_f = {'Forecast_M_1': px.colors.qualitative.Vivid[1],
               'Forecast_M_2': px.colors.qualitative.Vivid[3],
               'Forecast_M_3': px.colors.qualitative.Vivid[6],
@@ -44,25 +63,25 @@ tipo_dict_t = {'0': '11:00 AM',
               }
 models_info = 'Modelo Encoder Decoder para pronóstico, con variables en Adelanto' 
 
-training_set = 'Conjunto de entrenamiento:  2007-01-01 00:00:00 – 2022-03-12 23:00:00' 
-val_set = 'Conjunto de validación:  2022-03-13 00:00:00 – 2022-04-12 23:00:00' 
-test_set = 'Conjunto de prueba:   2022-04-13 00:00:00 – 2023-09-04 23:00:00'
+#training_set = 'Conjunto de entrenamiento:  2007-01-01 00:00:00 – 2022-03-12 23:00:00' 
+#val_set = 'Conjunto de validación:  2022-03-13 00:00:00 – 2022-04-12 23:00:00' 
+#test_set = 'Conjunto de prueba:   2022-04-13 00:00:00 – 2023-09-04 23:00:00'
 
 
-holiday_dates =['2023-05-01','2023-04-07','2023-02-06','2023-03-20','2023-01-01','2022-12-25','2022-11-20','2022-09-16']
-#date1 ='2022-09-14'
+#holiday_dates =['2023-05-01','2023-04-07','2023-02-06','2023-03-20','2023-01-01','2022-12-25','2022-11-20','2022-09-16']
+
 min_date = datetime.strptime("2022/09/14", "%Y/%m/%d").date()
 max_date = datetime.strptime("2023/09/04", "%Y/%m/%d").date()
 selectdate = datetime.strptime("2023/09/04", "%Y/%m/%d").date()
 st.write("Revisión de los resultados en conjunto de Prueba")
 st.write("Selecciona del conjunto de prueba 2022/09/14 a 2023/09/04")
-date1 = st.date_input("Selecciona la fecha a revisar ", value = selectdate, min_value =min_date,
+date_entrada = st.date_input("Selecciona la fecha a revisar ", value = selectdate, min_value =min_date,
 
                        max_value=max_date, key=None, help=None, on_change=None, 
                        format="YYYY/MM/DD", disabled=False, label_visibility="visible")
 
-Date = holiday_dates[2]
-datepath = str(date1)
+#Date = holiday_dates[2]
+datepath = str(date_entrada)
 #tipo = str(0)          ## choose corresponding index '0': 11:00 AM, '1': 12:00 AM, ..., '12': 23:00 AM
 option = st.select_slider(
     'Selecciona la hora de pronóstico', options=(
