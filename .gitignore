@@ -1,5 +1,6 @@
 ##Ignore
-.devcontainer
+.devcontainer/
+**/.devcontainer/
 .DS_Store
 **/.ipynb_checkpoints/
 .DS_Store
