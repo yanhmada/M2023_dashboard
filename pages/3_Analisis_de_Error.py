@@ -7,6 +7,16 @@ import numpy as np
 from datetime import datetime
 
 # Streamlit App
+st.markdown("<h1 style='color: gray;'> CONVENIO CENACE 2023-2025 </h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='color: orange;'> Diseño  e  implementación de una metodología para pronóstico de demanda de energía \
+            a corto plazo con manejo de datos bajo incertidumbre  </h2>", unsafe_allow_html=True)
+
+st.caption('''
+           En esta sección se incluyen los comparativos de  _MAPE_  en base a la hora que se\
+           realizó el pronóstico. Se muestran primero las gráficas por estación, y por mes seleccionado.
+           
+           ''')
+
 st.title ("Análisis de MAPE para pronósticos")
 
 
@@ -47,7 +57,6 @@ tipo = tipo_dict_1[option]
 
 df_compute = pd.read_csv("RESULTADOS_MAPE_HORA/Mape_["+tipo+"].csv")
 st.write(f' Hora de cálculo de pronóstico {option}')
-
 
 # Plot by season. Example for forecast computed at 11:00 AM 
 df_compute['Date'] = pd.to_datetime(df_compute['Date']) #

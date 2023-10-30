@@ -25,7 +25,7 @@ st.markdown( """
     </h5>
     """, unsafe_allow_html = True)
 
-
+#diccionarios
 color_dict_f = {'Forecast_M_1': px.colors.qualitative.Vivid[1],
               'Forecast_M_2': px.colors.qualitative.Vivid[3],
               'Forecast_M_3': px.colors.qualitative.Vivid[6],
@@ -60,14 +60,8 @@ tipo_dict_t = {'0': '11:00 AM',
                '11': '10:00 PM',
                '12': '11:00 PM',
               }
+
 models_info = 'Modelo Encoder Decoder para pronóstico, con variables en Adelanto' 
-
-#training_set = 'Conjunto de entrenamiento:  2007-01-01 00:00:00 – 2022-03-12 23:00:00' 
-#val_set = 'Conjunto de validación:  2022-03-13 00:00:00 – 2022-04-12 23:00:00' 
-#test_set = 'Conjunto de prueba:   2022-04-13 00:00:00 – 2023-09-04 23:00:00'
-
-
-#holiday_dates =['2023-05-01','2023-04-07','2023-02-06','2023-03-20','2023-01-01','2022-12-25','2022-11-20','2022-09-16']
 
 #Read available dates to check
 rtf_content = ""
@@ -86,9 +80,6 @@ for date_str in date_strings:
         external_dates.append(formatted_date)
     except ValueError:
         print(f"Invalid date string: {date_str}")
-#formatted_dates_str = ',\n'.join(external_dates)
-
-#active_dates = [external_dates]
 
 #For Calendar selector
 min_date = datetime.strptime("2022/09/14", "%Y/%m/%d").date()
@@ -96,7 +87,7 @@ max_date = datetime.strptime("2023/09/04", "%Y/%m/%d").date()
 selectdate = datetime.strptime("2023/09/03", "%Y/%m/%d").date()
 
 st.write("Revisión de los resultados en conjunto de Prueba")
-st.write("Selecciona del conjunto de prueba 2022/09/14 a 2023/09/04")
+st.write("Del conjunto de prueba 2022/09/14 a 2023/09/04:")
 
 date_entrada = st.date_input("Selecciona la fecha a revisar ", value = selectdate, min_value =min_date,
                        max_value=max_date, key=None, help=None, on_change=None, 
