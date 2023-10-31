@@ -126,7 +126,7 @@ fig.update_layout(xaxis=dict(title='MAPE (24 h)', zeroline=False),boxmode='group
 fig.update_traces(orientation='h', side='positive', width=4) # horizontal box plots 
 fig.update_layout(
         title= models_info + '<br>' 
-        + '<sub>' + "Cálculo de Mape por Estación "+ '<br>' + '</sub>',
+        + '<sub>' + "Cálculo de MAPE por estación "+ '<br>' + '</sub>',
         legend_title='Variantes',
         font=dict(
             size=13,
@@ -138,12 +138,12 @@ fig.update_layout(
         'yanchor': 'top'})
 
 st.plotly_chart(fig)
-st.write(f' Grafica de MAPE Por mes ')
+st.write(f' Grafica de MAPE por mes ')
 st.divider()
 st.write(f'Ejemplo {option}')
 #MONTHLY
 mes = st.select_slider(
-    'Selecciona Mes para pronóstico', options=(
+    'Selecciona mes para pronóstico', options=(
     'Enero' , 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
                'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
               )

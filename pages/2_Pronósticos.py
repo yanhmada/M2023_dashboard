@@ -18,7 +18,7 @@ st.caption('''
            ''')
 st.markdown( """
 <h5 style='color: gray;'>
-    - M1 : Modelo de Base sin Adelanto <br>
+    - M1 : Modelo de base sin adelanto <br>
     - M2 : Modelo, adelanto con 1 componente.<br>
     - M3 : Modelo adelanto, climas y festivo.    <br>       
     - M4: Modelo adelanto, clima, festivos y día<br>
@@ -61,7 +61,7 @@ tipo_dict_t = {'0': '11:00 AM',
                '12': '11:00 PM',
               }
 
-models_info = 'Modelo Encoder Decoder para pronóstico, con variables en Adelanto' 
+models_info = 'Modelo encoder~decoder para pronóstico, con variables en adelanto' 
 
 #Read available dates to check
 rtf_content = ""
@@ -86,7 +86,7 @@ min_date = datetime.strptime("2022/09/14", "%Y/%m/%d").date()
 max_date = datetime.strptime("2023/09/04", "%Y/%m/%d").date()
 selectdate = datetime.strptime("2023/09/03", "%Y/%m/%d").date()
 
-st.write("Revisión de los resultados en conjunto de Prueba")
+st.write("Revisión de los resultados en conjunto de prueba")
 st.write("Del conjunto de prueba 2022/09/14 a 2023/09/04:")
 
 date_entrada = st.date_input("Selecciona la fecha a revisar ", value = selectdate, min_value =min_date,
@@ -125,7 +125,7 @@ else:
         line_color=color_dict_f[curve], 
         name = curve
             ))
-    newnames = {'Actual':'Demanda real de Gerencia', 
+    newnames = {'Actual':'Demanda real de gerencia', 
                 'Forecast_M_1':'SV: Sin variables por adelanto', 
                 'Forecast_M_2':'PC: Sólo primera componente por adelanto',
                 'Forecast_M_3':'CF: Clima y festivos por adelanto',
