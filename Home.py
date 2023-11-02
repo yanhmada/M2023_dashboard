@@ -14,17 +14,11 @@ st.header('''
           :orange[ PROYECTO TERMINAL: DISEÑO E IMPLEMENTACIÓN DE UNA METODOLOGÍA PARA PRONÓSTICO DE DEMANDA \
           DE ENERGÍA A CORTO PLAZO CON MANEJO DE DATOS BAJO INCERTIDUMBRE]
           ''')            
-st.markdown('''
-            PROYECTO TERMINAL:  DISEÑO E  IMPLEMENTACIÓN DE UNA METODOLOGÍA PARA PRONÓSTICO DE DEMANDA \
-            DE ENERGÍA A CORTO PLAZO CON MANEJO DE DATOS BAJO INCERTIDUMBRE 
-            ''')
 
 st.subheader('''
              :grey[Tablero Complementario al reporte técnico transferencia de tecnología: \
              metodología para el pronóstico a corto plazo para la zona de \
              Gerencia del Noroeste con datos en adelanto]
              ''')
-
-
 
 

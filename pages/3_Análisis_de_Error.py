@@ -49,25 +49,28 @@ color_dict_e = {'Invierno': px.colors.qualitative.Pastel2[2],
                }
 
 option = st.select_slider(
-    'Selecciona la hora de pronóstico', options=(
-    '11:00 AM' , '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM',
-               '06:00 PM', '07:00 PM', '08:00 PM', '09:00 PM', '10:00 PM', '11:00 PM'),
-              )
+        'Selecciona la hora de pronóstico', options=(
+        '11:00 AM' , '12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM',
+        '06:00 PM', '07:00 PM', '08:00 PM', '09:00 PM', '10:00 PM', '11:00 PM'),
+        )
 tipo = tipo_dict_1[option]
 
 df_compute = pd.read_csv("RESULTADOS_MAPE_HORA/Mape_["+tipo+"].csv")
+
 st.write(f' Hora de cálculo de pronóstico {option}')
 
-# Plot by season. Example for forecast computed at 11:00 AM 
+st.subheader("MAPE por estación")
+# Plot by season
 df_compute['Date'] = pd.to_datetime(df_compute['Date']) #
 df = df_compute
 df['Season'] = (df['Date'].dt.month%12 + 3)//3
+
 seasons = {
              1: 'Invierno',
              2: 'Primavera',
              3: 'Verano',
-             4: 'Otoño'
-}
+             4: 'Otoño'}
+
 df['Season_name'] = df['Season'].map(seasons)
 Mape_Models = ['Mape_M_1', 'Mape_M_2', 'Mape_M_3', 'Mape_M_4']
 
@@ -138,9 +141,9 @@ fig.update_layout(
         'yanchor': 'top'})
 
 st.plotly_chart(fig)
-st.write(f' Grafica de MAPE por mes ')
+st.subheader(' Gráfica de MAPE por mes ')
 st.divider()
-st.write(f'Ejemplo {option}')
+
 #MONTHLY
 mes = st.select_slider(
     'Selecciona mes para pronóstico', options=(
@@ -148,7 +151,8 @@ mes = st.select_slider(
                'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'),
               )
 
-st.subheader(f"Se muestran resultados de {mes} ")
+st.markdown(f"Se muestran resultados de {mes} ")
+
 map_mes= {
     'Enero': 1,
     'Febrero': 2,
@@ -162,35 +166,21 @@ map_mes= {
     'Octubre': 10,
     'Noviembre': 11,
     'Diciembre': 12
-}
+    }
 df_compute['Date'] = pd.to_datetime(df_compute['Date']) #
 df = df_compute
 df['Month'] = (df['Date'].dt.month)
 fig2 = go.Figure()
-fig2.update_layout(
-    autosize=False,
-    width=1000,
-    height=1400,
-    yaxis=dict(
-        title_text='MAPE Para mes {mes}',
-            titlefont=dict(size=20),
-    ))
 
 mes_sel =map_mes[mes] # month selection
 Mape_Models = ['Mape_M_1', 'Mape_M_2', 'Mape_M_3', 'Mape_M_4']
 fig2 = go.Figure()
-fig2.update_layout(
-    autosize=False,
-    width=1200,
-    height=600,
-    )
-newnames = { 
+newnames2 = { 
             'Mape_M_1':'SV: Sin variables por adelanto', 
             'Mape_M_2':'PC: Sólo primera componente por adelanto',
             'Mape_M_3':'CF: Clima y festivos por adelanto',
             'Mape_M_4':'CFD: Clima, festivos y día de la semana por adelanto'
            }
-fig2.for_each_trace(lambda t: t.update(name = newnames[t.name]))
 
 for mape in Mape_Models:
     fig2.add_trace(go.Violin(
@@ -206,6 +196,8 @@ for mape in Mape_Models:
         visible=True, 
         opacity=0.7
     ))
+
+fig2.for_each_trace(lambda t: t.update(name=newnames2.get(t.name, t.name)))
 fig2.update_layout(xaxis=dict(title='MAPE para pronóstico', zeroline=False),boxmode='group')
 fig2.update_traces(orientation='h', side='positive', width=4) # horizontal orientation 
 fig2.update_layout(
@@ -213,12 +205,30 @@ fig2.update_layout(
         + '<sub>' + "Cálculo de Mape por Mes  "+ '<br>' + '</sub>',
         legend_title='Variantes',
         font=dict(
-            size=13,
-            color='gray'))
+            size=15,
+            color='gray'),
+        legend=dict(
+            x=1,
+            y=1,
+            xanchor='right',
+            yanchor='top'
+        )
+            )
 fig2.update_layout(
     title={
-        'y':0.99,
+        'y':0,
         'xanchor': 'left',
         'yanchor': 'top'})
+    
+fig2.update_layout(
+    autosize=False,
+    width=1200,
+    height=600,
+    yaxis=dict(
+        title_text='Modelos',
+        ticktext=['Modelo M1','Modelo M2','Modelo M3','Modelo M4'],
+        tickmode="array",
+        titlefont=dict(size=10),
+    ))
 
 st.plotly_chart(fig2)
