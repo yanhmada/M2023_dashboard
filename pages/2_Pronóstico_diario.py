@@ -9,8 +9,9 @@ import re
 # Header
 
 st.markdown("<h1 style='color: gray;'> CONVENIO CENACE 2023-2025 </h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='color: orange;'> Diseño  e  implementación de una metodología para pronóstico de demanda de energía \
-            a corto plazo con manejo de datos bajo incertidumbre  </h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='color: orange;'> Desarrollo de prototipo: metodología \
+            con aprendizaje profundo para el pronóstico a corto plazo de demanda \
+            de energía con datos en adelanto.</h2>", unsafe_allow_html=True)
 
 st.caption('''
            En esta sección se incluyen los comparativos de  _MAPE_  para los diferentes 4 modelos analizados\
