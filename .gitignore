@@ -1,8 +1,11 @@
 ##Ignore
+#dev
 .devcontainer/
 **/.devcontainer/
+#mac files
 .DS_Store
+
 **/.ipynb_checkpoints/
-.DS_Store
 **/.ipynb_checkpoints/
+
 /RESULTADOS_MAPE_HORA/Untitled.ipynb

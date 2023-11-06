@@ -11,14 +11,13 @@ st.title(":grey[CONVENIO CENACE-UNISON 2023-2025]")
 
 
 st.header('''
-          :orange[ PROYECTO TERMINAL: DISEÑO E IMPLEMENTACIÓN DE UNA METODOLOGÍA PARA PRONÓSTICO DE DEMANDA \
-          DE ENERGÍA A CORTO PLAZO CON MANEJO DE DATOS BAJO INCERTIDUMBRE]
+          :orange[ PROYECTO TERMINAL: Desarrollo de prototipo: metodología \
+            con aprendizaje profundo para el pronóstico a corto plazo de demanda \
+            de energía con datos en adelanto.]
           ''')            
 
 st.subheader('''
-             :grey[Tablero Complementario al reporte técnico transferencia de tecnología: \
-             metodología para el pronóstico a corto plazo para la zona de \
-             Gerencia del Noroeste con datos en adelanto]
+             :grey[Tablero Complementario al reporte técnico ]
              ''')
 
 
