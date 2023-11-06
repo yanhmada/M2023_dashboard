@@ -11,7 +11,7 @@ st.title(":grey[CONVENIO CENACE-UNISON 2023-2025]")
 
 
 st.header('''
-          :orange[ PROYECTO TERMINAL: Desarrollo de prototipo: metodología \
+          :orange[Desarrollo de prototipo: metodología \
             con aprendizaje profundo para el pronóstico a corto plazo de demanda \
             de energía con datos en adelanto.]
           ''')            
@@ -19,5 +19,7 @@ st.header('''
 st.subheader('''
              :grey[Tablero Complementario al reporte técnico ]
              ''')
+
+st.image("https://github.com/yanhmada/Biociencias_2023/blob/dbb966a406a5c67c797517a251a514ca9fc65ef7/Mycorrhiza/bottom_cenace.png")
 
 
