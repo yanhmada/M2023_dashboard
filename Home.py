@@ -7,7 +7,7 @@ import numpy as np
 from datetime import datetime
 
 
-st.title(":grey[CONVENIO CENACE-UNISON 2023-2025]")
+st.title(":grey[CONVENIO CENACE-UNISON ]")
 
 
 st.header('''
