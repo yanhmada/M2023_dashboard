@@ -17,9 +17,7 @@ st.header('''
           ''')            
 
 st.subheader('''
-             :grey[Tablero Complementario al reporte técnico ]
+             :grey[Tablero complementario al reporte técnico ]
              ''')
-
-st.image("https://github.com/yanhmada/Biociencias_2023/blob/dbb966a406a5c67c797517a251a514ca9fc65ef7/Mycorrhiza/bottom_cenace.png")
 
 
