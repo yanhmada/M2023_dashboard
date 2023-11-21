@@ -8,7 +8,7 @@ import re
 
 # Header
 
-st.markdown("<h1 style='color: gray;'> CONVENIO CENACE 2023-2025 </h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color: gray;'> CONVENIO CENACE-UNISON </h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='color: orange;'> Desarrollo de prototipo: metodología \
             con aprendizaje profundo para el pronóstico a corto plazo de demanda \
             de energía con datos en adelanto.</h2>", unsafe_allow_html=True)
@@ -17,14 +17,6 @@ st.caption('''
            En esta sección se incluyen los comparativos de  _MAPE_  para los diferentes 4 modelos analizados\
            
            ''')
-st.markdown( """
-<h5 style='color: gray;'>
-    - M1 : Modelo de base sin adelanto <br>
-    - M2 : Modelo, adelanto con 1 componente.<br>
-    - M3 : Modelo adelanto, climas y festivo.    <br>       
-    - M4: Modelo adelanto, clima, festivos y día<br>
-    </h5>
-    """, unsafe_allow_html = True)
 
 #diccionarios
 color_dict_f = {'Forecast_M_1': px.colors.qualitative.Vivid[1],

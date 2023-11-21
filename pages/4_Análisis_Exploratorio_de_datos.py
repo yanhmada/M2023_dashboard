@@ -7,7 +7,7 @@ from datetime import datetime
 
 # Header
 
-st.markdown("<h1 style='color: gray;'> CONVENIO CENACE 2023-2025 </h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='color: gray;'> CONVENIO CENACE-UNISON </h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='color: orange;'> Desarrollo de prototipo: metodología \
             con aprendizaje profundo para el pronóstico a corto plazo de demanda \
             de energía con datos en adelanto.</h2>", unsafe_allow_html=True)
@@ -25,7 +25,7 @@ st.caption('''
            ''')
 
 
-st.title ("Análisis Exploratorio de Datos")
+st.title ("Análisis exploratorio de datos")
 #hourly  chart 
 df_GCRNO_complete = pd.read_csv('./GCRNO_complete_silver_2023-10-03.csv' , parse_dates=True)
 df_GCRNO_complete['Date_time'] =  pd.to_datetime(df_GCRNO_complete['Date_time'],format="%Y-%m-%d %H:%M:%S")
