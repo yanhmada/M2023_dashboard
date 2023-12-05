@@ -71,11 +71,8 @@ for month in range(1, 13):
         pointpos=-1.8  # Position of the outliers
     )
     boxes.append(box)
-
-# Create figure and add the box traces
 fig = go.Figure(data=boxes)
 
-# Update layout
 fig.update_layout(
     xaxis=dict(
         type='category', 
